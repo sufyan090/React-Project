@@ -1,14 +1,14 @@
 import "./App.css";
 import React, { useState } from "react";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
   const toggleMode = () => {
     if (mode === 'light') {
       setmode('dark');
-      document.body.style.backgroundColor = "#042743";
+      document.body.style.backgroundColor = "black";
       showAlert("Dark Mode has been enabled", "success");
       settext("Enable Light Mode")
     }
@@ -47,20 +47,20 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
-      <Navbar mode={mode} toggleMode={toggleMode} text={text} />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        {/* <Switch>
+      <Router>
+        <Navbar mode={mode} toggleMode={toggleMode} text={text} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Switch>
             <Route path="/about">
-              <About />
+              <About mode={mode}/>
             </Route>
             <Route path="/home">
+              <TextForm showAlert={showAlert} heading="Enter the text to Uppercase the text" mode={mode} />
             </Route>
           </Switch>
-      </Router> */}
-      </div>
-      <TextForm showAlert={showAlert} heading="Enter the text to Uppercase the text" mode={mode} />
+        </div>
+      </Router>
     </>
   );
 }
